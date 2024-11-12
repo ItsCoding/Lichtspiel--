@@ -1,7 +1,7 @@
 import { Mesh } from "three";
-import { BaseEffect } from "./BaseEffect";
+import { BasePositionEffect } from "./BasePositionEffect";
 
-export class WaveEffect extends BaseEffect {
+export class WaveEffect extends BasePositionEffect {
     constructor() {
         super();
     }

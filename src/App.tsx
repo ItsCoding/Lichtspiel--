@@ -3,20 +3,21 @@ import './App.css'
   ;
 import { SceneController } from './SceneController';
 import { Vector3 } from 'three';
+import { MainScene } from './scenes/Main';
 
 const App = () => {
-  const [controller, setController] = createSignal<SceneController>()
-  const [position, setPosition] = createSignal<THREE.Vector3 | undefined>(new Vector3(0,0,0))
+  const [controller, setController] = createSignal<MainScene>()
+  // const [position, setPosition] = createSignal<THREE.Vector3 | undefined>(new Vector3(0,0,0))
 
   onMount(() => {
-    let newController = SceneController.create(document.getElementById("scene") as HTMLElement)
+    let newController = MainScene.create(document.getElementById("scene") as HTMLElement)
     setController(newController)
     }
   )
   createEffect(() => {
-    if (controller()?.character.light.position) {
-      setPosition(controller()?.character.light.position)
-    }
+    // if (controller()?.character.light.position) {
+    //   setPosition(controller()?.character.light.position)
+    // }
   }
   )
 
@@ -27,11 +28,11 @@ const App = () => {
       <p>Go Down: Shift + Space</p>
       <p> More Light: Y</p>
       <p> DIMM!: X</p>
-      <p>
+      {/* <p>
         x: {position()?.x}
         y: {position()?.y}
         z: {position()?.z}
-      </p>
+      </p> */}
       <button onClick={() => console.log(controller())}>test</button>
     </div>
   )

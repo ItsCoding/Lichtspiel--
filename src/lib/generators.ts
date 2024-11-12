@@ -37,9 +37,9 @@ export const makeRenderer = () => {
 
 export const makeCamera = () => {
   const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
-  camera.position.z = 5;
+  // camera.position.z = 10;
   camera.up.set(0, 0, 1);
-  camera.position.set(0, 0, 2)
+  camera.position.set(0, 0, 15)
   camera.lookAt(0, 0, 0);
   return camera;
 }
@@ -88,4 +88,16 @@ export const makeBlock = (x: number, y: number, z:number, color: THREE.Color) =>
   cube.position.set(x,y,z)
   cube.castShadow = true;
   return cube
+}
+
+
+export const makeRealBox = (x: number, y: number, z:number,width:number,height:number, depth: number,color: THREE.Color) => {
+    
+    const geometry = new THREE.BoxGeometry(width,height,depth)
+  
+    const material = new THREE.MeshStandardMaterial({color: color})
+    const cube = new THREE.Mesh(geometry, material)
+    cube.position.set(x,y,z)
+    cube.castShadow = true;
+    return cube
 }
